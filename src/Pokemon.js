@@ -9,7 +9,8 @@ class Pokemon {
     sprites,
     stats,
     weight,
-    forms
+    forms,
+    id
   ) {
     this.name = name;
     this.moves = moves;
@@ -21,6 +22,7 @@ class Pokemon {
     this.stats = stats;
     this.weight = weight;
     this.forms = forms;
+    this.id = id;
   }
 }
 

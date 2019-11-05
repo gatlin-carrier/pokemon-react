@@ -34,8 +34,8 @@ class BattlePokemon extends React.Component {
   };
 
   getPokemon = async () => {
-    let randomNumberOne = Math.floor(Math.random() * 649);
-    let randomNumberTwo = Math.floor(Math.random() * 649);
+    let randomNumberOne = Math.floor(Math.random() * 805);
+    let randomNumberTwo = Math.floor(Math.random() * 805);
 
     if (randomNumberOne !== randomNumberTwo) {
       const pokemonEndpoint = "https://pokeapi.co/api/v2/pokemon/";
@@ -71,7 +71,7 @@ class BattlePokemon extends React.Component {
         pokemonTwoData.forms
       );
 
-      if (pokemonOneData && pokemonTwoData) {
+      if (pokemonOne.name && pokemonTwo.name) {
         this.setState({
           pokemon: [pokemonOne, pokemonTwo]
         });
@@ -79,6 +79,7 @@ class BattlePokemon extends React.Component {
 
       console.log(this.state.pokemon[0]);
       console.log(this.state.pokemon[1]);
+      console.log(this.state);
     }
   };
 
@@ -90,13 +91,13 @@ class BattlePokemon extends React.Component {
     return (
       <div>
         {this.state.pokemon[0] ? (
-          <img src={this.state.pokemon[0].sprites.back_default} alt="" />
+          <img src={this.state.pokemon[0].sprites.front_default} alt="" />
         ) : (
           false
         )}
 
         {this.state.pokemon[1] ? (
-          <img src={this.state.pokemon[1].sprites.back_default} alt="" />
+          <img src={this.state.pokemon[1].sprites.front_default} alt="" />
         ) : (
           false
         )}
