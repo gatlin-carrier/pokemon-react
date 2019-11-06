@@ -96,10 +96,10 @@ const PokedexDetail = props => {
               </Typography>
             </CardContent>
             <CardActions disableSpacing>
-              <IconButton aria-label="add to favorites">
-                <FavoriteIcon />
-              </IconButton>
-              <IconButton aria-label="add">
+              <IconButton
+                onClick={() => props.addPokemonToTeam(props.pokemon)}
+                aria-label="add to team"
+              >
                 <AddIcon />
               </IconButton>
               <IconButton

@@ -12,7 +12,8 @@ class App extends React.Component {
   state = {
     pokemonList: [],
     currentResponse: null,
-    selectedPokemon: null
+    selectedPokemon: null,
+    team: []
   };
 
   getPokemon = async () => {
@@ -164,8 +165,16 @@ class App extends React.Component {
     pokemonArray.push(pokemon);
 
     this.setState({
-      pokemonList: pokemonArray
+      pokemonList: pokemonArray,
+      selectedPokemon: pokemonArray[0]
     });
+  };
+
+  addPokemonToTeam = pokemon => {
+    this.setState({
+      team: [...this.state.team, pokemon]
+    });
+    console.log(this.state.team);
   };
 
   componentDidMount() {
@@ -196,13 +205,21 @@ class App extends React.Component {
             <Route exact path="/" component={Home}></Route>
             <Route
               path="/team-builder"
-              component={() => <TeamBuilder onFormSubmit={this.onTermSubmit} />}
+              component={() => (
+                <TeamBuilder
+                  onFormSubmit={this.onTermSubmit}
+                  addPokemonToTeam={this.addPokemonToTeam}
+                  pokemonList={this.state.pokemonList}
+                  team={this.state.team}
+                />
+              )}
             ></Route>
             {/* <Route path="/battle" component={Battle}></Route> */}
             <Route
               path="/pokedex"
               component={() => (
                 <Pokedex
+                  addPokemonToTeam={this.addPokemonToTeam}
                   pokemonList={this.state.pokemonList}
                   getPokemon={this.getPokemon}
                   getNextPokemonList={this.getNextPokemonList}
@@ -267,42 +284,3 @@ class App extends React.Component {
 }
 
 export default App;
-
-// state = {
-//   allPokemon: []
-// };
-
-// getPokemon = async () => {
-//   let counter = 1;
-//   let pokemonArray = [];
-
-//   while (counter < 805) {
-//     const pokemonEndpoint = "https://pokeapi.co/api/v2/pokemon/";
-//     const response = await axios.get(pokemonEndpoint + counter);
-//     const pokemonData = response.data;
-
-//     const pokemon = {
-//       name: pokemonData.species.name,
-//       id: pokemonData.id,
-//       image: pokemonData.sprites.front_default
-//     };
-//     //   const pokemon = new Pokemon(
-//     //     pokemonData.species.name,
-//     //     pokemonData.moves,
-//     //     pokemonData.abilities,
-//     //     null,
-//     //     null,
-//     //     pokemonData.types,
-//     //     pokemonData.sprites,
-//     //     pokemonData.stats,
-//     //     pokemonData.weight,
-//     //     pokemonData.forms
-//     //   );
-//     pokemonArray.push(pokemon);
-//     counter++;
-//   }
-
-//   this.setState({
-//     allPokemon: pokemonArray
-//   });
-// };

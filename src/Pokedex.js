@@ -49,7 +49,10 @@ class Pokedex extends React.Component {
             alignItems="flex-end"
             justify="flex-start"
           >
-            <PokedexDetail pokemon={this.props.selectedPokemon} />
+            <PokedexDetail
+              pokemon={this.props.selectedPokemon}
+              addPokemonToTeam={this.props.addPokemonToTeam}
+            />
           </Grid>
         </Grid>
         <IconButton>
