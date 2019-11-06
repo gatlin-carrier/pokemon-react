@@ -1,6 +1,7 @@
 import React from "react";
 import PokedexItem from "./PokedexItem";
 import PokedexDetail from "./PokedexDetail";
+import Search from "./Search";
 import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
@@ -20,6 +21,7 @@ class Pokedex extends React.Component {
 
     return renderedList ? (
       <div>
+        <Search onFormSubmit={this.props.onFormSubmit} />
         <IconButton>
           <ArrowBackIosIcon
             onClick={() => this.props.getPreviousPokemonList()}

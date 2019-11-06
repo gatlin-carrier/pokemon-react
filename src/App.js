@@ -1,15 +1,10 @@
 import React from "react";
 import Home from "./Home";
-import Battle from "./Battle";
+// import Battle from "./Battle";
 import Pokedex from "./Pokedex";
+import TeamBuilder from "./TeamBuilder";
 import axios from "axios";
 import Pokemon from "./Pokemon";
-import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
-import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import MenuIcon from "@material-ui/icons/Menu";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./App.css";
 
@@ -22,20 +17,16 @@ class App extends React.Component {
 
   getPokemon = async () => {
     const pokemonArray = [];
-
     const pokemonEndpoint = "https://pokeapi.co/api/v2/pokemon/";
     const response = await axios.get(pokemonEndpoint);
-
     const pokemonData = response.data.results;
+
     pokemonData.forEach(details => {
+      let pokemonDetails;
       axios.get(details.url).then(response => {
-        const pokemonDetails = response.data;
-        console.log(pokemonDetails);
-        let pokemonDescription;
-        axios
-          .get(pokemonDetails.species.url)
-          .then(responseB => (pokemonDescription = responseB));
-        console.log(pokemonDescription);
+        pokemonDetails = response.data;
+        // console.log(pokemonDetails);
+
         const pokemon = new Pokemon(
           pokemonDetails.species.name,
           pokemonDetails.moves,
@@ -48,7 +39,6 @@ class App extends React.Component {
           pokemonDetails.weight,
           pokemonDetails.forms,
           pokemonDetails.id
-          // pokemonDescription.data.genera[2]
         );
 
         pokemonArray.push(pokemon);
@@ -146,7 +136,36 @@ class App extends React.Component {
     this.setState({
       selectedPokemon: pokemon
     });
-    console.log(pokemon);
+  };
+
+  onTermSubmit = async term => {
+    const response = await axios.get(
+      `https://pokeapi.co/api/v2/pokemon/${term}`
+    );
+
+    const pokemonData = response.data;
+    console.log(pokemonData);
+    const pokemonArray = [];
+
+    const pokemon = new Pokemon(
+      pokemonData.species.name,
+      pokemonData.moves,
+      pokemonData.abilities,
+      null,
+      null,
+      pokemonData.types,
+      pokemonData.sprites,
+      pokemonData.stats,
+      pokemonData.weight,
+      pokemonData.forms,
+      pokemonData.id
+    );
+
+    pokemonArray.push(pokemon);
+
+    this.setState({
+      pokemonList: pokemonArray
+    });
   };
 
   componentDidMount() {
@@ -163,8 +182,11 @@ class App extends React.Component {
                 <Link to="/">Home</Link>
               </li>
               <li>
-                <Link to="/battle">Battle</Link>
+                <Link to="/team-builder">Team Builder</Link>
               </li>
+              {/* <li>
+                <Link to="/battle">Battle</Link>
+              </li> */}
               <li>
                 <Link to="/pokedex">Pokedex</Link>
               </li>
@@ -172,7 +194,11 @@ class App extends React.Component {
           </nav>
           <Switch>
             <Route exact path="/" component={Home}></Route>
-            <Route path="/battle" component={Battle}></Route>
+            <Route
+              path="/team-builder"
+              component={() => <TeamBuilder onFormSubmit={this.onTermSubmit} />}
+            ></Route>
+            {/* <Route path="/battle" component={Battle}></Route> */}
             <Route
               path="/pokedex"
               component={() => (
@@ -183,6 +209,7 @@ class App extends React.Component {
                   getPreviousPokemonList={this.getPreviousPokemonList}
                   selectedPokemon={this.state.selectedPokemon}
                   onPokemonSelect={this.onPokemonSelect}
+                  onFormSubmit={this.onTermSubmit}
                 />
               )}
             ></Route>
