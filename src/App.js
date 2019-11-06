@@ -4,8 +4,13 @@ import Battle from "./Battle";
 import Pokedex from "./Pokedex";
 import axios from "axios";
 import Pokemon from "./Pokemon";
+import Typography from "@material-ui/core/Typography";
+import IconButton from "@material-ui/core/IconButton";
+import { makeStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import MenuIcon from "@material-ui/icons/Menu";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
 import "./App.css";
 
 class App extends React.Component {
@@ -25,7 +30,12 @@ class App extends React.Component {
     pokemonData.forEach(details => {
       axios.get(details.url).then(response => {
         const pokemonDetails = response.data;
-
+        console.log(pokemonDetails);
+        let pokemonDescription;
+        axios
+          .get(pokemonDetails.species.url)
+          .then(responseB => (pokemonDescription = responseB));
+        console.log(pokemonDescription);
         const pokemon = new Pokemon(
           pokemonDetails.species.name,
           pokemonDetails.moves,
@@ -38,6 +48,7 @@ class App extends React.Component {
           pokemonDetails.weight,
           pokemonDetails.forms,
           pokemonDetails.id
+          // pokemonDescription.data.genera[2]
         );
 
         pokemonArray.push(pokemon);
@@ -177,6 +188,52 @@ class App extends React.Component {
             ></Route>
           </Switch>
         </Router>
+
+        {/* <AppBar position="static">
+          <Toolbar>
+            <IconButton
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+            ></IconButton>
+            <Router>
+              <Typography variant="h6">
+                <Link to="/">Home</Link>
+              </Typography>
+              <Typography variant="h6">
+                <Link to="/battle">Battle</Link>
+              </Typography>
+              <Typography variant="h6">
+                <Link to="/pokedex">Pokedex</Link>
+              </Typography>
+              <Switch>
+                <Route exact path="/" component={Home}></Route>
+                <Route path="/battle" component={Battle}></Route>
+                <Route
+                  path="/pokedex"
+                  component={() => (
+                    <Pokedex
+                      pokemonList={this.state.pokemonList}
+                      getPokemon={this.getPokemon}
+                      getNextPokemonList={this.getNextPokemonList}
+                      getPreviousPokemonList={this.getPreviousPokemonList}
+                      selectedPokemon={this.state.selectedPokemon}
+                      onPokemonSelect={this.onPokemonSelect}
+                    />
+                  )}
+                ></Route>
+              </Switch>
+            </Router>
+          </Toolbar>
+        </AppBar> */}
+        {/* <NavBar
+          pokemonList={this.state.pokemonList}
+          getPokemon={this.getPokemon}
+          getNextPokemonList={this.getNextPokemonList}
+          getPreviousPokemonList={this.getPreviousPokemonList}
+          selectedPokemon={this.state.selectedPokemon}
+          onPokemonSelect={this.onPokemonSelect}
+        /> */}
       </div>
     );
   }

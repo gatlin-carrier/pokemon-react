@@ -55,6 +55,7 @@ const PokemonCard = props => {
 
             <CardActions>
               <Button
+                onClick={() => props.onPokemonSelect(props.pokemon)}
                 variant="contained"
                 className={classes.button}
                 size="small"
