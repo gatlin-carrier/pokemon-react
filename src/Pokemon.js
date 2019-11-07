@@ -11,8 +11,7 @@ class Pokemon {
     weight,
     forms,
     id,
-    species,
-    eggGroup
+    speciesDetailsURL
   ) {
     this.name = name;
     this.moves = moves;
@@ -25,8 +24,7 @@ class Pokemon {
     this.weight = weight;
     this.forms = forms;
     this.id = id;
-    this.species = species;
-    this.eggGroup = eggGroup;
+    this.speciesDetailsURL = speciesDetailsURL;
   }
 }
 

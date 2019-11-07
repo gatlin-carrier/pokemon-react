@@ -1,5 +1,6 @@
 import React from "react";
 import PokemonCard from "./PokemonCard";
+import axios from "axios";
 
 const PokedexItem = props => {
   return (

@@ -1,6 +1,4 @@
 import React from "react";
-import Home from "./Home";
-// import Battle from "./Battle";
 import Pokedex from "./Pokedex";
 import TeamBuilder from "./TeamBuilder";
 import axios from "axios";
@@ -39,7 +37,8 @@ class App extends React.Component {
           pokemonDetails.stats,
           pokemonDetails.weight,
           pokemonDetails.forms,
-          pokemonDetails.id
+          pokemonDetails.id,
+          pokemonDetails.species.url
         );
 
         pokemonArray.push(pokemon);
@@ -139,6 +138,16 @@ class App extends React.Component {
     });
   };
 
+  onPokemonDelete = pokemon => {
+    let currentTeamArray = this.state.team;
+    let teamMemberIndex = currentTeamArray.indexOf(pokemon);
+
+    this.setState({
+      team: currentTeamArray.splice(teamMemberIndex + 1, 1)
+    });
+    console.log(this.state.team);
+  };
+
   onTermSubmit = async term => {
     const response = await axios.get(
       `https://pokeapi.co/api/v2/pokemon/${term}`
@@ -159,7 +168,8 @@ class App extends React.Component {
       pokemonData.stats,
       pokemonData.weight,
       pokemonData.forms,
-      pokemonData.id
+      pokemonData.id,
+      pokemonData.species.url
     );
 
     pokemonArray.push(pokemon);
@@ -188,21 +198,14 @@ class App extends React.Component {
           <nav>
             <ul>
               <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
                 <Link to="/team-builder">Team Builder</Link>
               </li>
-              {/* <li>
-                <Link to="/battle">Battle</Link>
-              </li> */}
               <li>
                 <Link to="/pokedex">Pokedex</Link>
               </li>
             </ul>
           </nav>
           <Switch>
-            <Route exact path="/" component={Home}></Route>
             <Route
               path="/team-builder"
               component={() => (
@@ -211,6 +214,7 @@ class App extends React.Component {
                   addPokemonToTeam={this.addPokemonToTeam}
                   pokemonList={this.state.pokemonList}
                   team={this.state.team}
+                  onPokemonDelete={this.onPokemonDelete}
                 />
               )}
             ></Route>

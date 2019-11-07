@@ -8,14 +8,20 @@ class TeamBuilder extends React.Component {
     team: this.props.team
   };
 
-  renderedList = this.state.team.map(teamMember => {
-    return <TeamBuilderItem pokemon={teamMember} />;
+  renderedList = this.state.team.map((teamMember, index) => {
+    return (
+      <TeamBuilderItem
+        onPokemonDelete={this.props.onPokemonDelete}
+        key={index}
+        pokemon={teamMember}
+      />
+    );
   });
   render() {
     return (
       <div>
         <h1>Your Team</h1>
-        <Search onFormSubmit={this.props.onFormSubmit} />
+        {/* <Search onFormSubmit={this.props.onFormSubmit} /> */}
         {this.state.team ? this.renderedList : null}
       </div>
     );
