@@ -212,7 +212,7 @@ class App extends React.Component {
               </li>
               <li>
                 <Link className="link" to="/pokedex">
-                  Search
+                  Pokedex
                 </Link>
               </li>
             </ul>
