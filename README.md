@@ -9,7 +9,7 @@
 5. As a user, I want to be able to easily switch back and forth between my team and the search page so that I can quickly add pokemon to my roster.
 
 ##Wireframe
-![wireframe][https://github.com/gatlin-carrier/pokemon-react/blob/master/images/Screen%20Shot%202019-11-08%20at%2012.15.10%20AM.png]
+![wireframe][images\Screen Shot 2019-11-08 at 12.15.10 AM.png]
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
