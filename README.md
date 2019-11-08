@@ -10,7 +10,7 @@
 
 ##Wireframe
 
-![wireframe][images\wireframe.png]
+![wireframe](https://github.com/gatlin-carrier/pokemon-react/blob/master/images/wireframe.png?raw=true)
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
