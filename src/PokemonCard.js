@@ -29,6 +29,9 @@ const useStyles = makeStyles({
   button: {
     backgroundColor: "#186799",
     color: "white"
+  },
+  name: {
+    padding: 2
   }
 });
 
@@ -49,7 +52,11 @@ const PokemonCard = props => {
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
                 <Avatar className={classes.avatar}>{props.id}</Avatar>
+<<<<<<< HEAD
                 {props.name.toUpperCase()}
+=======
+                <div className={classes.name}>{props.name.toUpperCase()}</div>
+>>>>>>> 717930d73842b91294e36405fb52a70ec601ebd3
               </Typography>
             </CardContent>
 

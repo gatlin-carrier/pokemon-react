@@ -45,6 +45,8 @@ const PokedexDetail = props => {
     setExpanded(!expanded);
   };
 
+ 
+
   return (
     <div>
       {props.pokemon && props.speciesDetails ? (

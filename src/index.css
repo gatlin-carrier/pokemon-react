@@ -12,6 +12,7 @@ code {
     monospace;
 }
 
+<<<<<<< HEAD
 .fixed {
   position: fixed;
 }
@@ -21,6 +22,15 @@ nav {
 }
 
 ul {
+=======
+nav {
+  height: 100px;
+  
+  
+}
+
+ul{
+>>>>>>> 717930d73842b91294e36405fb52a70ec601ebd3
   background-color: #186799;
   height: 100%;
   width: 100%;
@@ -43,6 +53,10 @@ li {
 .link {
   text-decoration: none;
   color: white;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 717930d73842b91294e36405fb52a70ec601ebd3
 }
 
 .move:hover {

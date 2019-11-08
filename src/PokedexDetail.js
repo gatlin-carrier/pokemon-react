@@ -19,7 +19,7 @@ class PokemonDetail extends React.Component {
     }
   };
 
-  componentWillMount() {
+  componentDidMount() {
     this.getPokemonSpeciesDetails();
   }
 
