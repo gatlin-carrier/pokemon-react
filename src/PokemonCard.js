@@ -49,13 +49,12 @@ const PokemonCard = props => {
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
                 <Avatar className={classes.avatar}>{props.id}</Avatar>
-                {props.name}
+                {props.name.toUpperCase()}
               </Typography>
             </CardContent>
 
-            <CardActions>
+            <CardActions onClick={() => props.onPokemonSelect(props.pokemon)}>
               <Button
-                onClick={() => props.onPokemonSelect(props.pokemon)}
                 variant="contained"
                 className={classes.button}
                 size="small"

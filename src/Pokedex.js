@@ -6,7 +6,6 @@ import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
-import { withRouter } from "react-router";
 import "./Pokedex.css";
 
 class Pokedex extends React.Component {
@@ -53,4 +52,4 @@ class Pokedex extends React.Component {
   }
 }
 
-export default withRouter(Pokedex);
+export default Pokedex;

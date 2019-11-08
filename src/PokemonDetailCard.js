@@ -56,7 +56,7 @@ const PokedexDetail = props => {
                   {props.pokemon.id}
                 </Avatar>
               }
-              title={props.pokemon.name}
+              title={props.pokemon.name.toUpperCase()}
               subheader={props.speciesDetails.data.genera[2].genus}
             />
             <CardMedia
@@ -115,7 +115,9 @@ const PokedexDetail = props => {
               <CardContent>
                 <Typography paragraph>
                   {props.pokemon.moves.map(move => (
-                    <Typography>{move.move.name}</Typography>
+                    <Typography>
+                      {move.move.name.toUpperCase().replace(/-/g, " ")}
+                    </Typography>
                   ))}
                 </Typography>
               </CardContent>

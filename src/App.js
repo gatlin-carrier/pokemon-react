@@ -145,12 +145,11 @@ class App extends React.Component {
     this.setState({
       team: currentTeamArray.splice(teamMemberIndex + 1, 1)
     });
-    console.log(this.state.team);
   };
 
   onTermSubmit = async term => {
     const response = await axios.get(
-      `https://pokeapi.co/api/v2/pokemon/${term}`
+      `https://pokeapi.co/api/v2/pokemon/${term.toLowerCase()}`
     );
 
     const pokemonData = response.data;
@@ -198,10 +197,14 @@ class App extends React.Component {
           <nav>
             <ul>
               <li>
-                <Link to="/team-builder">Team Builder</Link>
+                <Link className="link" to="/team-builder">
+                  Team Builder
+                </Link>
               </li>
               <li>
-                <Link to="/pokedex">Pokedex</Link>
+                <Link className="link" to="/pokedex">
+                  Search
+                </Link>
               </li>
             </ul>
           </nav>
@@ -236,52 +239,6 @@ class App extends React.Component {
             ></Route>
           </Switch>
         </Router>
-
-        {/* <AppBar position="static">
-          <Toolbar>
-            <IconButton
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-            ></IconButton>
-            <Router>
-              <Typography variant="h6">
-                <Link to="/">Home</Link>
-              </Typography>
-              <Typography variant="h6">
-                <Link to="/battle">Battle</Link>
-              </Typography>
-              <Typography variant="h6">
-                <Link to="/pokedex">Pokedex</Link>
-              </Typography>
-              <Switch>
-                <Route exact path="/" component={Home}></Route>
-                <Route path="/battle" component={Battle}></Route>
-                <Route
-                  path="/pokedex"
-                  component={() => (
-                    <Pokedex
-                      pokemonList={this.state.pokemonList}
-                      getPokemon={this.getPokemon}
-                      getNextPokemonList={this.getNextPokemonList}
-                      getPreviousPokemonList={this.getPreviousPokemonList}
-                      selectedPokemon={this.state.selectedPokemon}
-                      onPokemonSelect={this.onPokemonSelect}
-                    />
-                  )}
-                ></Route>
-              </Switch>
-            </Router>
-          </Toolbar>
-        </AppBar> */}
-        {/* <NavBar
-          pokemonList={this.state.pokemonList}
-          getPokemon={this.getPokemon}
-          getNextPokemonList={this.getNextPokemonList}
-          getPreviousPokemonList={this.getPreviousPokemonList}
-          selectedPokemon={this.state.selectedPokemon}
-          onPokemonSelect={this.onPokemonSelect}
-        /> */}
       </div>
     );
   }
