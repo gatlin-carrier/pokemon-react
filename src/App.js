@@ -154,10 +154,6 @@ class App extends React.Component {
     this.setState({
       team: currentTeamArray.splice(teamMemberIndex + 1, 1)
     });
-<<<<<<< HEAD
-=======
-  
->>>>>>> 717930d73842b91294e36405fb52a70ec601ebd3
   };
 
   onTermSubmit = async term => {
@@ -206,7 +202,6 @@ class App extends React.Component {
   render() {
     return (
       <div>
-<<<<<<< HEAD
         <Router>
           <nav>
             <ul>
@@ -253,100 +248,6 @@ class App extends React.Component {
             ></Route>
           </Switch>
         </Router>
-=======
-          <Router>
-            <nav>
-              <ul>
-                <li>
-                  <Link className="link" to="/team-builder">
-                    Team Builder
-                  </Link>
-                </li>
-                <li>
-                  <Link className="link" to="/pokedex">
-                    Search
-                  </Link>
-                </li>
-              </ul>
-            </nav>
-            <Switch>
-              <Route
-                path="/team-builder"
-                component={() => (
-                  <TeamBuilder
-                    onFormSubmit={this.onTermSubmit}
-                    addPokemonToTeam={this.addPokemonToTeam}
-                    pokemonList={this.state.pokemonList}
-                    team={this.state.team}
-                    onPokemonDelete={this.onPokemonDelete}
-                  />
-                )}
-              ></Route>
-              {/* <Route path="/battle" component={Battle}></Route> */}
-              <Route
-                path="/pokedex"
-                component={() => (
-                  <Pokedex
-                    addPokemonToTeam={this.addPokemonToTeam}
-                    pokemonList={this.state.pokemonList}
-                    getPokemon={this.getPokemon}
-                    getNextPokemonList={this.getNextPokemonList}
-                    getPreviousPokemonList={this.getPreviousPokemonList}
-                    selectedPokemon={this.state.selectedPokemon}
-                    onPokemonSelect={this.onPokemonSelect}
-                    onFormSubmit={this.onTermSubmit}
-                  />
-                )}
-              ></Route>
-            </Switch>
-          </Router>
-
-        {/* <AppBar position="static">
-          <Toolbar>
-            <IconButton
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-            ></IconButton>
-            <Router>
-              <Typography variant="h6">
-                <Link to="/">Home</Link>
-              </Typography>
-              <Typography variant="h6">
-                <Link to="/battle">Battle</Link>
-              </Typography>
-              <Typography variant="h6">
-                <Link to="/pokedex">Pokedex</Link>
-              </Typography>
-              <Switch>
-                <Route exact path="/" component={Home}></Route>
-                <Route path="/battle" component={Battle}></Route>
-                <Route
-                  path="/pokedex"
-                  component={() => (
-                    <Pokedex
-                      pokemonList={this.state.pokemonList}
-                      getPokemon={this.getPokemon}
-                      getNextPokemonList={this.getNextPokemonList}
-                      getPreviousPokemonList={this.getPreviousPokemonList}
-                      selectedPokemon={this.state.selectedPokemon}
-                      onPokemonSelect={this.onPokemonSelect}
-                    />
-                  )}
-                ></Route>
-              </Switch>
-            </Router>
-          </Toolbar>
-        </AppBar> */}
-        {/* <NavBar
-          pokemonList={this.state.pokemonList}
-          getPokemon={this.getPokemon}
-          getNextPokemonList={this.getNextPokemonList}
-          getPreviousPokemonList={this.getPreviousPokemonList}
-          selectedPokemon={this.state.selectedPokemon}
-          onPokemonSelect={this.onPokemonSelect}
-        /> */}
->>>>>>> 717930d73842b91294e36405fb52a70ec601ebd3
       </div>
     );
   }

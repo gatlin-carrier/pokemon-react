@@ -45,7 +45,6 @@ const TeamBuilderItem = props => {
     setExpanded(!expanded);
   };
 
-<<<<<<< HEAD
   const [currentMoves, setMove] = React.useState([]);
 
   const handleRemoveItem = move => {
@@ -54,19 +53,8 @@ const TeamBuilderItem = props => {
   };
 
   console.log(currentMoves);
-=======
-  const [currentMoves, setMove] = React.useState([])
-  
-  const handleRemoveItem = (move) => {
-    const moveIndex = currentMoves.indexOf(move)
-     setMove(currentMoves.splice(moveIndex, 1));
-   };
-
-  console.log(currentMoves)
->>>>>>> 717930d73842b91294e36405fb52a70ec601ebd3
 
   return (
-    
     <Card className={classes.card}>
       <CardHeader
         avatar={
@@ -83,10 +71,6 @@ const TeamBuilderItem = props => {
           </IconButton>
         }
         title={props.pokemon.name.toUpperCase()}
-<<<<<<< HEAD
-=======
-       
->>>>>>> 717930d73842b91294e36405fb52a70ec601ebd3
       />
       <CardMedia
         className={classes.media}
@@ -98,17 +82,12 @@ const TeamBuilderItem = props => {
           Current Moves
           <hr />
           {currentMoves.map(move => (
-<<<<<<< HEAD
             <div onClick={() => handleRemoveItem(move)} className="move">
               <Typography name={move}>
                 {move.toUpperCase().replace(/-/g, " ")}
               </Typography>
             </div>
           ))}
-=======
-<div onClick={() => handleRemoveItem(move)} className="move"><Typography name={move}>{move.toUpperCase()}</Typography></div>
-                  ))}
->>>>>>> 717930d73842b91294e36405fb52a70ec601ebd3
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
@@ -126,7 +105,7 @@ const TeamBuilderItem = props => {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>Moves:</Typography>
-<<<<<<< HEAD
+
           <Typography>
             {props.pokemon.moves.map(move => (
               <Typography
@@ -141,11 +120,6 @@ const TeamBuilderItem = props => {
               </Typography>
             ))}
           </Typography>
-=======
-        <Typography>{props.pokemon.moves.map(move => (
-                    <Typography className="move" onClick={currentMoves.length < 4 ? () => setMove(oldArray => [...oldArray, move.move.name]) : null}>{move.move.name}</Typography>
-                  ))}</Typography>
->>>>>>> 717930d73842b91294e36405fb52a70ec601ebd3
         </CardContent>
       </Collapse>
     </Card>
