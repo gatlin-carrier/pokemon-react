@@ -6,6 +6,15 @@ import Pokemon from "./Pokemon";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./App.css";
 
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import IconButton from "@material-ui/core/IconButton";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+import MenuIcon from "@material-ui/icons/Menu";
+import SearchIcon from "@material-ui/icons/Search";
+import MoreIcon from "@material-ui/icons/MoreVert";
+
 class App extends React.Component {
   state = {
     pokemonList: [],
@@ -145,12 +154,12 @@ class App extends React.Component {
     this.setState({
       team: currentTeamArray.splice(teamMemberIndex + 1, 1)
     });
-    console.log(this.state.team);
+  
   };
 
   onTermSubmit = async term => {
     const response = await axios.get(
-      `https://pokeapi.co/api/v2/pokemon/${term}`
+      `https://pokeapi.co/api/v2/pokemon/${term.toLowerCase()}`
     );
 
     const pokemonData = response.data;
@@ -194,48 +203,52 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Router>
-          <nav>
-            <ul>
-              <li>
-                <Link to="/team-builder">Team Builder</Link>
-              </li>
-              <li>
-                <Link to="/pokedex">Pokedex</Link>
-              </li>
-            </ul>
-          </nav>
-          <Switch>
-            <Route
-              path="/team-builder"
-              component={() => (
-                <TeamBuilder
-                  onFormSubmit={this.onTermSubmit}
-                  addPokemonToTeam={this.addPokemonToTeam}
-                  pokemonList={this.state.pokemonList}
-                  team={this.state.team}
-                  onPokemonDelete={this.onPokemonDelete}
-                />
-              )}
-            ></Route>
-            {/* <Route path="/battle" component={Battle}></Route> */}
-            <Route
-              path="/pokedex"
-              component={() => (
-                <Pokedex
-                  addPokemonToTeam={this.addPokemonToTeam}
-                  pokemonList={this.state.pokemonList}
-                  getPokemon={this.getPokemon}
-                  getNextPokemonList={this.getNextPokemonList}
-                  getPreviousPokemonList={this.getPreviousPokemonList}
-                  selectedPokemon={this.state.selectedPokemon}
-                  onPokemonSelect={this.onPokemonSelect}
-                  onFormSubmit={this.onTermSubmit}
-                />
-              )}
-            ></Route>
-          </Switch>
-        </Router>
+          <Router>
+            <nav>
+              <ul>
+                <li>
+                  <Link className="link" to="/team-builder">
+                    Team Builder
+                  </Link>
+                </li>
+                <li>
+                  <Link className="link" to="/pokedex">
+                    Search
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+            <Switch>
+              <Route
+                path="/team-builder"
+                component={() => (
+                  <TeamBuilder
+                    onFormSubmit={this.onTermSubmit}
+                    addPokemonToTeam={this.addPokemonToTeam}
+                    pokemonList={this.state.pokemonList}
+                    team={this.state.team}
+                    onPokemonDelete={this.onPokemonDelete}
+                  />
+                )}
+              ></Route>
+              {/* <Route path="/battle" component={Battle}></Route> */}
+              <Route
+                path="/pokedex"
+                component={() => (
+                  <Pokedex
+                    addPokemonToTeam={this.addPokemonToTeam}
+                    pokemonList={this.state.pokemonList}
+                    getPokemon={this.getPokemon}
+                    getNextPokemonList={this.getNextPokemonList}
+                    getPreviousPokemonList={this.getPreviousPokemonList}
+                    selectedPokemon={this.state.selectedPokemon}
+                    onPokemonSelect={this.onPokemonSelect}
+                    onFormSubmit={this.onTermSubmit}
+                  />
+                )}
+              ></Route>
+            </Switch>
+          </Router>
 
         {/* <AppBar position="static">
           <Toolbar>

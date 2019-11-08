@@ -45,6 +45,8 @@ const PokedexDetail = props => {
     setExpanded(!expanded);
   };
 
+ 
+
   return (
     <div>
       {props.pokemon && props.speciesDetails ? (
@@ -56,7 +58,7 @@ const PokedexDetail = props => {
                   {props.pokemon.id}
                 </Avatar>
               }
-              title={props.pokemon.name}
+              title={props.pokemon.name.toUpperCase()}
               subheader={props.speciesDetails.data.genera[2].genus}
             />
             <CardMedia

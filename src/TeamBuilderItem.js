@@ -45,7 +45,17 @@ const TeamBuilderItem = props => {
     setExpanded(!expanded);
   };
 
+  const [currentMoves, setMove] = React.useState([])
+  
+  const handleRemoveItem = (move) => {
+    const moveIndex = currentMoves.indexOf(move)
+     setMove(currentMoves.splice(moveIndex, 1));
+   };
+
+  console.log(currentMoves)
+
   return (
+    
     <Card className={classes.card}>
       <CardHeader
         avatar={
@@ -61,8 +71,8 @@ const TeamBuilderItem = props => {
             <RemoveCircleOutlineIcon />
           </IconButton>
         }
-        title={props.pokemon.name}
-        subheader="Species"
+        title={props.pokemon.name.toUpperCase()}
+       
       />
       <CardMedia
         className={classes.media}
@@ -72,6 +82,10 @@ const TeamBuilderItem = props => {
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
           Current Moves
+          <hr />
+          {currentMoves.map(move => (
+<div onClick={() => handleRemoveItem(move)} className="move"><Typography name={move}>{move.toUpperCase()}</Typography></div>
+                  ))}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
@@ -89,7 +103,9 @@ const TeamBuilderItem = props => {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>Moves:</Typography>
-          <Typography></Typography>
+        <Typography>{props.pokemon.moves.map(move => (
+                    <Typography className="move" onClick={currentMoves.length < 4 ? () => setMove(oldArray => [...oldArray, move.move.name]) : null}>{move.move.name}</Typography>
+                  ))}</Typography>
         </CardContent>
       </Collapse>
     </Card>
