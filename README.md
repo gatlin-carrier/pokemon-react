@@ -1,3 +1,17 @@
+
+
+## User Stories
+
+1. As a user, I want to be able to search for pokemon so that I can enjoy my favorite pokemon.
+2. As a user, I want to be able to add pokemon I have searched for to my team so that I can plan out my future/present pokemon team.
+3. As a user, I want to be able to view information such as the species name and description of the pokemon so that I can learn more about them.
+4. As a user, I want to be able to view all the moves a pokemon can learn so that I can plan out my pokemon's moveset for battle.
+5. As a user, I want to be able to easily switch back and forth between my team and the search page so that I can quickly add pokemon to my roster.
+
+##Wireframe
+![wireframe][https://wireframe.cc/5u9WLF]
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
